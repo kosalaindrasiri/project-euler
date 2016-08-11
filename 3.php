@@ -2,7 +2,7 @@
 
 $number = 600851475143;
 
-for ($i = 2; $i < $number / 2; $i++) {
+for ($i = 3; $i < $number / 2; $i = $i+2) {
     if ($number % $i == 0) {
         if (checkPrime($number / $i)) {
             echo $number / $i.'</br>';
@@ -13,7 +13,15 @@ for ($i = 2; $i < $number / 2; $i++) {
 
 function checkPrime($val) {
     $isPrime = true;
-    for ($j = 2; $j <= $val / 2; $j++) {
+    $sqrt = sqrt($val);
+       
+    if($val==2)
+        return TRUE;
+    
+    if($val==1 || $val % 2 ==0)
+        return FALSE;
+    
+    for ($j = 3; $j <= $sqrt; $j=$j+2) {
 
         if ($val % $j == 0) {
             $isPrime = FALSE;
